@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://red-moss-01d09b010.5.azurestaticapps.net"],
     methods: ['GET', 'POST', 'PUT', "DELETE"],
     credentials: true
 }));
@@ -20,7 +20,6 @@ app.use(cookieParser());
 // Route handlers
 app.use('/auth', adminRouter);
 app.use('/employee', EmployeeRouter);
-
 
 // JWT verification middleware
 const verifyUser = (req, res, next) => {
