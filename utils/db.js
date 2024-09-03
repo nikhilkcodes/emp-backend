@@ -1,4 +1,4 @@
-import mysql from 'mysql'
+const mysql = require('mysql');
 
 const con = mysql.createConnection({
     host: "sql12.freesqldatabase.com",
@@ -6,7 +6,7 @@ const con = mysql.createConnection({
     password: "nEYcalKx3u",
     database: "sql12728463",
     port: 3306
-})
+});
 
 con.connect(function (err) {
     if (err) {
@@ -14,6 +14,6 @@ con.connect(function (err) {
     } else {
         console.log("db Connected");
     }
-})
+});
 
-export default con;
+module.exports = con;

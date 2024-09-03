@@ -1,16 +1,17 @@
-import express from "express";
-import cors from 'cors';
-import path from 'path'; // Import path module
-import { adminRouter } from "./Routes/AdminRoute.js";
-import { EmployeeRouter } from "./Routes/EmployeeRoute.js";
-import Jwt from "jsonwebtoken";
-import cookieParser from "cookie-parser";
+const express = require('express');
+const cors = require('cors');
+const path = require('path'); // Import path module
+const Jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+
+const { adminRouter } = require('./Routes/AdminRoute');
+const { EmployeeRouter } = require('./Routes/EmployeeRoute');
 
 const app = express();
 
 app.use(cors({
     origin: ["https://red-moss-01d09b010.5.azurestaticapps.net"],
-    methods: ['GET', 'POST', 'PUT', "DELETE"],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
 
@@ -40,7 +41,6 @@ const verifyUser = (req, res, next) => {
 app.get('/verify', verifyUser, (req, res) => {
     return res.json({ Status: true, role: req.role, id: req.id });
 });
-
 
 // Start the server
 app.listen(3000, () => {
