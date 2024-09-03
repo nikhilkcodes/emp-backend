@@ -1,11 +1,11 @@
 const mysql = require('mysql');
-
+require('dotenv').config();
 const con = mysql.createConnection({
-    host: "sql12.freesqldatabase.com",
-    user: "sql12728463",
-    password: "nEYcalKx3u",
-    database: "sql12728463",
-    port: 3306
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB,
+    port: process.env.DB_PORT
 });
 
 con.connect(function (err) {
