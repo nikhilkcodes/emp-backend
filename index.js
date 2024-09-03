@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const path = require('path'); // Import path module
 const Jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
@@ -8,12 +7,6 @@ const { adminRouter } = require('./Routes/AdminRoute');
 const { EmployeeRouter } = require('./Routes/EmployeeRoute');
 
 const app = express();
-
-app.use(cors({
-    origin: ["https://red-moss-01d09b010.5.azurestaticapps.net"],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-}));
 
 app.use(express.json());
 app.use(cookieParser());
