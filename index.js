@@ -42,7 +42,12 @@ app.get('/verify', verifyUser, (req, res) => {
     return res.json({ Status: true, role: req.role, id: req.id });
 });
 
+// Simple route to check server status
+app.get('/', (req, res) => {
+    res.send('Server is running!');
+});
+
 // Start the server
-app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+app.listen(8000, () => {
+    console.log("Server is running on port 8000");
 });
