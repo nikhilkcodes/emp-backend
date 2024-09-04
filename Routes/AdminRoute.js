@@ -8,9 +8,12 @@ const path = require('path');
 const router = express.Router();
 
 router.post("/adminlogin", (req, res) => {
-    const sql = "SELECT * from admin WHERE email = ? AND password = ?";
+    const sql = "SELECT * FROM admin WHERE email = ? AND password = ?";
     con.query(sql, [req.body.email, req.body.password], (err, result) => {
-        if (err) return res.json({ loginStatus: false, Error: "Query error" });
+        if (err) {
+            console.error("Query error:", err);  // Detailed logging
+            return res.json({ loginStatus: false, Error: "Query error", Details: err.message });
+        }
         if (result.length > 0) {
             const email = result[0].email;
             const token = jwt.sign(
@@ -25,6 +28,7 @@ router.post("/adminlogin", (req, res) => {
         }
     });
 });
+
 
 router.get('/category', (req, res) => {
     const sql = "SELECT * FROM category";
